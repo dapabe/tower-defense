@@ -1,20 +1,21 @@
 import { AbsFlow } from "./abstracts/flow.abstract";
 import { MenuScene } from "./scenes/menu.scene";
 import { AbsScene } from "./abstracts/scene.abstract";
+import { Scene } from "three";
 
 export class SceneLoader implements AbsFlow {
-	public currentScene: AbsScene;
+	public loaderScene = new Scene();
+	public currentScenes: Array<AbsScene> = [];
 
 	constructor() {
-		this.currentScene = new MenuScene();
+		this.currentScenes.push(new MenuScene());
+		this.loaderScene.add(this.currentScenes[0].scene);
 	}
 
 	public init(): void {
-		this.currentScene.init();
-		// grid.rotation.x = ;
+		this.currentScenes[0].init();
 	}
 	public update(): void {
-		// cube.rotation.x += 0.001;
-		// console.log(this.scene.);
+		this.currentScenes[0].update();
 	}
 }

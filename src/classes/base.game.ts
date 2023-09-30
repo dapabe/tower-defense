@@ -26,9 +26,6 @@ export class BaseGame implements AbsFlow {
 	}
 
 	public render() {
-		this.renderer.render(
-			this.sceneLoader.currentScene.scene,
-			this.baseCamera.camera
-		);
+		this.renderer.render(this.sceneLoader.loaderScene, this.baseCamera.camera);
 	}
 }
